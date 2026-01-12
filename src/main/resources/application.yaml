@@ -2,7 +2,7 @@ spring:
   application:
     name: electronic-store
   datasource:
-    url: jdbc:postgresql:interchange.proxy.rlwy.net:45516/railway
+    url: jdbc:postgresql://interchange.proxy.rlwy.net:45516/railway
     username: postgres
     password: hgVqNVoCnUfEROjIAlzOhugeXMLvIwIU
     driver-class-name: org.postgresql.Driver
