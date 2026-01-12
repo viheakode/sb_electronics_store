@@ -19,13 +19,13 @@ public class ProductController {
     @Autowired
     private ProductServiceImp productServiceImp;
 
-    @PostMapping(value = "/v1/product/", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/v1/product", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Object> save(@ModelAttribute ProductRequest productRequest){
         ProductDto productDto = productServiceImp.create(productRequest);
         return ApiResponseStructure.singleResponse("Created", productDto, HttpStatus.CREATED);
     }
 
-    @GetMapping("/v1/product/")
+    @GetMapping("/v1/products")
     public ResponseEntity<Object> getAll(){
         List<ProductDto> productDtos = productServiceImp.getAllProducts();
         return ApiResponseStructure.singleResponse("Ok", productDtos, HttpStatus.OK);
@@ -37,18 +37,18 @@ public class ProductController {
         return ApiResponseStructure.singleResponse("Ok", productDto, HttpStatus.OK);
     }
 
-    @GetMapping("/v1/product/category")
+    @GetMapping("/v1/products/category")
     public ResponseEntity<Object> getByCategory(@RequestParam Long categoryId){
         List<ProductDto> productDtos = productServiceImp.getAllProductsByCategory(categoryId);
         return ApiResponseStructure.singleResponse("Ok", productDtos, HttpStatus.OK);
     }
 
-    @GetMapping("/v1/product/brand")
+    @GetMapping("/v1/products/brand")
     public ResponseEntity<Object> getByBrand(@RequestParam Long brandId){
         List<ProductDto> productDtos = productServiceImp.getAllProductsByBrand(brandId);
         return ApiResponseStructure.singleResponse("Ok", productDtos, HttpStatus.OK);
     }
-    @GetMapping("/v1/product/category/brand")
+    @GetMapping("/v1/products/category/brand")
     public ResponseEntity<Object> getByCategoryAndBrand(@RequestParam Long categoryId, @RequestParam Long brandId){
         List<ProductDto> productDtos = productServiceImp.getAllProductsByCategoryAndBrand(categoryId, brandId);
         return ApiResponseStructure.singleResponse("Ok", productDtos, HttpStatus.OK);
@@ -66,7 +66,7 @@ public class ProductController {
         return ApiResponseStructure.singleResponse("Deleted", productDto, HttpStatus.OK);
     }
 
-    @PostMapping(value = "/v2/product/", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/v2/product", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Object> save2(@ModelAttribute ProductRequest productRequest) throws Exception {
         ProductDto productDto = productServiceImp.create2(productRequest);
         return ApiResponseStructure.singleResponse("Created", productDto, HttpStatus.CREATED);
