@@ -1,16 +1,13 @@
 spring:
   application:
     name: electronic-store
+
   datasource:
-    url: jdbc:postgresql://interchange.proxy.rlwy.net:45516/railway
-    username: postgres
-    password: hgVqNVoCnUfEROjIAlzOhugeXMLvIwIU
-
-#    url: jdbc:postgresql://localhost:5432/electronics_db
-#    username: postgres
-#    password: 1
-
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
+
   jpa:
     hibernate:
       ddl-auto: update
@@ -20,9 +17,9 @@ spring:
       hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
 
 file:
-  upload-dir: D:/Spring Boot/upload
+  upload-dir: ${UPLOAD_DIR:D:/Spring Boot/upload}
 
 cloudinary:
-  cloud-name: dciecegu7
-  api-key: 293575831448855
-  api-secret: ip3ygQlgRT5QYb-ERpSkXoSOywA
+  cloud-name: ${CLOUDINARY_CLOUD_NAME}
+  api-key: ${CLOUDINARY_API_KEY}
+  api-secret: ${CLOUDINARY_API_SECRET}
